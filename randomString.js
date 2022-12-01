@@ -25,4 +25,4 @@ const generateToken = async () => {
 }
 
 generateToken();
-console.log('Random String:  ',resetToken);
+// console.log('Random String:  ',resetToken);
