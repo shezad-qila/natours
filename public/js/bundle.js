@@ -67973,7 +67973,7 @@ var bookTour = /*#__PURE__*/function () {
           case 3:
             session = _context.sent;
             _context.next = 6;
-            return _stripe.default.redirectToCheckout({
+            return stripe.redirectToCheckout({
               sessionId: session.data.session.id
             });
           case 6:
@@ -68239,7 +68239,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57929" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64886" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

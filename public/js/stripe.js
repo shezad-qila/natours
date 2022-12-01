@@ -11,7 +11,7 @@ export const bookTour = async tourId => {
         );
 
         // redirect ot payment page
-        await Stripe.redirectToCheckout({
+        await stripe.redirectToCheckout({
             sessionId: session.data.session.id
         })
     }catch(err){
