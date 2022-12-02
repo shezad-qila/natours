@@ -30,17 +30,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // set security HTTP headers
-// app.use(helmet());
-
-// helmet.contentSecurityPolicy({
-//   useDefaults: false,
-//   directives: {
-//     defaultSrc: ["'self'"],
-//     scriptSrc: ["'self'", "https://js.stripe.com/v3/"], // scripts from example.com are now trusted
-//     objectSrc: ["'none'"],
-//     upgradeInsecureRequests: [],
-//   },
-// })
+app.use(
+    helmet({
+        contentSecurityPolicy: false,
+    })
+);
 
 // Development logging
 if(process.env.NODE_ENV === 'development'){

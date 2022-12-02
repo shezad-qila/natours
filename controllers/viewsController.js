@@ -67,3 +67,7 @@ exports.updateUserData = async (req, res) => {
         user: updatedUser
     })
 };
+
+exports.getMyTours = (req, res, next) => {
+    
+}

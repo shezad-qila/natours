@@ -1,5 +1,5 @@
 const express = require('express');
-const bookinsController = require(`${__dirname}/../controllers/bookinsController`);
+const bookingController = require(`${__dirname}/../controllers/bookingController`);
 const authController = require(`${__dirname}/../controllers/authController`);
 
 const router = express.Router();
@@ -8,7 +8,7 @@ router
     .get(
         '/checkout-session/:tourId', 
         authController.protect,
-        bookinsController.getCheckoutSession
+        bookingController.getCheckoutSession
     );
 
 module.exports = router;
