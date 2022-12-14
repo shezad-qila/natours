@@ -8,7 +8,7 @@ const User= require(`${__dirname}/../../models/userModels`);
 dotenv.config({path :'./../../config.env'});
 
 // DB Connection
-const DB = process.env.DATABASE_LOCAL.replace('<PASSWORD>',process.env.DATABASE_PASSWORD);
+const DB = process.env.DATABASE.replace('<PASSWORD>',process.env.DATABASE_PASSWORD);
 mongoose
     .connect(DB,{
         useNewUrlParser: true,
@@ -25,8 +25,8 @@ const users = JSON.parse(fs.readFileSync(`${__dirname}/users.json`, 'utf-8'));
 const importData = async () => {
     try{
         await Tour.create(tour);
-        // await Review.create(reviews);
-        // await User.create(users, { validatBeforeSave: false });
+        await Review.create(reviews);
+        await User.create(users, { validatBeforeSave: false });
         console.log("Data imported successfully");
     }catch (err){
         console.log(err)
@@ -37,8 +37,8 @@ const importData = async () => {
 const deleteData = async () => {
     try{
         await Tour.deleteMany();
-        // await Review.deleteMany();
-        // await User.deleteMany();
+        await Review.deleteMany();
+        await User.deleteMany();
         console.log("Data deleted successfully");
     }catch (err){
         console.log(err)
