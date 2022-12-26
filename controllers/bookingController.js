@@ -70,6 +70,7 @@ exports.createBookingCheckout = catchAsync(async (req, res, next) => {
     res.redirect(req.originalUrl.split('?')[0]);
 });
 
+// get bookings for by User id
 exports.getUserBookings = catchAsync(async (req, res, next) => {
     const booking = await Booking.find({ user: req.params.userId });
 
@@ -77,6 +78,20 @@ exports.getUserBookings = catchAsync(async (req, res, next) => {
 
     res.status(200).json({
         status: 'success',
+        results: booking.length,
+        data: booking
+    });
+});
+
+// get bookings for by tour id
+exports.getTourBookings = catchAsync(async (req, res, next) => {
+    const booking = await Booking.find({ tour: req.params.tourId });
+
+    if(!booking) return next(new AppError('There is n`t any booking for tour.', 404));
+
+    res.status(200).json({
+        status: 'success',
+        results: booking.length,
         data: booking
     });
 });
