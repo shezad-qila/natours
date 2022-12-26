@@ -70,6 +70,17 @@ exports.createBookingCheckout = catchAsync(async (req, res, next) => {
     res.redirect(req.originalUrl.split('?')[0]);
 });
 
+exports.getUserBookings = catchAsync(async (req, res, next) => {
+    const booking = await Booking.find({ user: req.params.userId });
+
+    if(!booking) return next(new AppError('You don`t booked any tour yet.', 404));
+
+    res.status(200).json({
+        status: 'success',
+        data: booking
+    });
+});
+
 exports.createBooking = factory.createOne(Booking);
 exports.getBooking = factory.getOne(Booking);
 exports.getAllBooking = factory.getAll(Booking);
